@@ -5,13 +5,14 @@ import { TabsContent } from "@radix-ui/react-tabs";
 import { Card } from "@/components/ui/card";
 import Execute from "../_components/execute";
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type propType = { params: { slug: string }; searchParams: {} };
 
 export async function generateMetadata(
   { params, searchParams }: propType,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  let title = "SnapOS";
+  const title = "SnapOS";
 
   return {
     title: title,
