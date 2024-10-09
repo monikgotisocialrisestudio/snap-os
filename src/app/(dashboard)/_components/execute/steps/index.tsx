@@ -18,56 +18,96 @@ const Steps = (props: propType) => {
         </h2>
       </div>
 
-      <ol className="overflow-hidden mt-5">
-        {Object.values(STEPS).map((step, index) => (
-          <li
-            key={step}
-            className={cn(
-              "relative flex-1",
-              index < Object.values(STEPS).length - 1 && 
-              "after:absolute after:left-[15px] after:top-5 after:-z-10 after:inline-block after:h-full after:w-0.5 after:bg-gray-200 after:content-[''] dark:after:bg-zinc-600",
-              activeStep === step ? "after:!bg-blue-700" : ""
-            )}
+      <ol className="overflow-hidden">
+        <li
+          className={cn(
+            "relative flex-1 after:absolute after:left-[15px] after:top-5 after:-z-10 after:inline-block after:h-full after:w-0.5 after:bg-gray-200 after:content-[''] dark:after:bg-zinc-600",
+            activeStep === STEPS.MODEL ? "after:!bg-blue-700" : ""
+          )}
+        >
+          <a
+            className="grid w-full grid-cols-[32px_1fr] gap-3 font-medium"
+            href={`#${STEPS.MODEL}`}
+            onClick={() => setActiveStep(STEPS.MODEL)}
           >
-            <a
-              className="grid w-full grid-cols-[32px_1fr] gap-3 font-medium pb-6"
-              href={`#${step}`}
-              onClick={() => setActiveStep(step)}
+            <span
+              className={cn(
+                "mt-4 flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-200 bg-background dark:border-zinc-600",
+                activeStep === STEPS.MODEL
+                  ? "!border-violet-950 bg-blue-700"
+                  : ""
+              )}
             >
-              <span
-                className={cn(
-                  "mt-4 flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#2A3134] relative",
-                  activeStep === step ? "bg-blue-700" : "bg-transparent"
-                )}
-              >
-                <div
-                  className={cn(
-                    "h-2.5 w-2.5 rounded-full",
-                    "bg-white absolute"
-                  )}
-                ></div>
+              <div className="h-2.5 w-2.5 rounded-full bg-foreground"></div>
+            </span>
+            <div className="mt-4 flex flex-col">
+              <p className="text-sm [&:not(:first-child)]:mt-6">Model</p>
+              <span className="mb-4 text-xs leading-tight">
+              Select your model
               </span>
-              <div className="mt-4 flex flex-col">
-                <p
-                  className={cn(
-                    "text-base [&:not(:first-child)]:mt-6 font-semibold",
-                    activeStep === step ? "font-semibold" : ""
-                  )}
-                >
-                  {step}
-                </p>
-                <span className={cn(
-                    "mb-1 text-base leading-tight font-normal",
-                    activeStep === step ? " text-[#FFFFFF]" : "text-[#B0B0B0]"
-                  )}>
-                  {step === STEPS.MODEL && "Select your model"}
-                  {step === STEPS.SCHEDULE && "When should the program execute"}
-                  {step === STEPS.DEVICE && "Which iPhones do you want to execute the program on"}
-                </span>
-              </div>
-            </a>
-          </li>
-        ))}
+            </div>
+          </a>
+        </li>
+
+        <li
+          className={cn(
+            "relative flex-1 after:absolute after:left-[15px] after:top-5 after:-z-10 after:inline-block after:h-full after:w-0.5 after:bg-gray-200 after:content-[''] dark:after:bg-zinc-600",
+            activeStep === STEPS.SCHEDULE ? "after:!bg-blue-700" : ""
+          )}
+        >
+          <a
+            className="grid w-full grid-cols-[32px_1fr] gap-3 font-medium"
+            href={`#${STEPS.SCHEDULE}`}
+            onClick={() => setActiveStep(STEPS.SCHEDULE)}
+          >
+            <span
+              className={cn(
+                "mt-4 flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-200 bg-background dark:border-zinc-600",
+                activeStep === STEPS.SCHEDULE
+                  ? "!border-violet-950 bg-blue-700"
+                  : ""
+              )}
+            >
+              <div className="h-2.5 w-2.5 rounded-full bg-foreground"></div>
+            </span>
+            <div className="mt-4 flex flex-col">
+              <p className="text-sm [&:not(:first-child)]:mt-6">Run Schedule</p>
+              <span className="mb-4 text-xs leading-tight">
+              When should the program execute
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li
+          className={cn(
+            "relative flex-1 after:absolute after:left-[15px] after:top-5 after:-z-10 after:inline-block after:h-full after:w-0.5 after:bg-gray-200 after:content-[''] dark:after:bg-zinc-600",
+            activeStep === STEPS.DEVICE ? "after:!bg-blue-700" : ""
+          )}
+        >
+          <a
+            className="grid w-full grid-cols-[32px_1fr] gap-3 font-medium"
+            href={`#${STEPS.DEVICE}`}
+            onClick={() => setActiveStep(STEPS.DEVICE)}
+          >
+            <span
+              className={cn(
+                "mt-4 flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-200 bg-background dark:border-zinc-600",
+                activeStep === STEPS.DEVICE
+                  ? "!border-violet-950 bg-blue-700"
+                  : ""
+              )}
+            >
+              <div className="h-2.5 w-2.5 rounded-full bg-foreground"></div>
+            </span>
+            <div className="mt-4 flex flex-col">
+              <p className="text-sm [&:not(:first-child)]:mt-6">Select Devices</p>
+              <span className="mb-4 text-xs leading-tight">
+              Which iphones do you want to execute the program on
+              </span>
+            </div>
+          </a>
+        </li>
       </ol>
     </div>
   );

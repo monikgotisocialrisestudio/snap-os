@@ -1,5 +1,6 @@
 import * as React from "react";
-import {  Check } from "lucide-react";
+import { X, Check } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import {
   Command,
   CommandGroup,
@@ -8,7 +9,7 @@ import {
 } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
 
-export type Framework = Record<"value" | "label", string>;
+type Framework = Record<"value" | "label", string>;
 
 interface FancyMultiSelectProps {
   selectedValues: Framework[];
@@ -33,7 +34,7 @@ export function FancyMultiSelect({ selectedValues, onChange, options }: FancyMul
 
   return (
     <Command onKeyDown={handleKeyDown} className="overflow-visible bg-transparent">
-      <div className="group rounded-md border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 bg-[#1C2124]">
+      <div className="group rounded-md border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
         <div className="flex flex-wrap gap-1">
           {/* {selectedValues.length > 0 && (
             <>
@@ -68,7 +69,7 @@ export function FancyMultiSelect({ selectedValues, onChange, options }: FancyMul
         <CommandList>
           {open && options.length > 0 ? (
             <div className="absolute top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in ">
-              <CommandGroup className="h-full overflow-auto bg-[#1C2124]">
+              <CommandGroup className="h-full overflow-auto">
                 {options.map((framework) => {
                   const isSelected = selectedValues.some((s) => s.value === framework.value);
                   return (
@@ -84,7 +85,7 @@ export function FancyMultiSelect({ selectedValues, onChange, options }: FancyMul
                           : [...selectedValues, framework];
 
                         onChange(newSelection);
-                        setInputValue(""); // Clear input on selection
+                        setInputValue("");
                       }}
                       className={"cursor-pointer flex items-center"}
                     >

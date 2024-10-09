@@ -10,7 +10,7 @@ import { SECTION_TITLE } from "@/lib/classNames";
 import AccountAnalytics from "./account-analytics";
 import Logs from "./logs";
 
-type propType = React.ComponentProps<typeof Sheet>;
+type propType = React.ComponentProps<typeof Sheet> & {};
 
 function AccountDetails(props: propType) {
   const { open, onOpenChange } = props;

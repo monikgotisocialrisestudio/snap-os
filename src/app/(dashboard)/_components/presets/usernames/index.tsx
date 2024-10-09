@@ -55,7 +55,7 @@ const Usernames = () => {
                     <Button
                       variant="link"
                       className="h-fit !p-0"
-                      // onClick={() => {}}
+                      onClick={() => {}}
                     >
                       {row.model}
                     </Button>
@@ -70,7 +70,7 @@ const Usernames = () => {
                     <Button
                       variant="link"
                       className="ml-auto h-fit !p-0"
-                      // onClick={() => {}}
+                      onClick={() => {}}
                     >
                       edit
                     </Button>

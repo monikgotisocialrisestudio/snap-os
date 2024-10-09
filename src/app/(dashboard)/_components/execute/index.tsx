@@ -23,7 +23,7 @@ import {
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FancyMultiSelect, Framework } from "@/components/shared/multi-select";
+import { FancyMultiSelect } from "@/components/shared/multi-select";
 
 const formSchema = z.object({
   schedule: z.string().min(2, {
@@ -48,7 +48,7 @@ const devices = [
 
 function Execute() {
   const [activeStep, setActiveStep] = useState<STEPS>(STEPS.MODEL);
-  const [selectedFrameworks, setSelectedFrameworks] = useState<Framework[]>([]);
+  const [selectedFrameworks, setSelectedFrameworks] = useState([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -60,7 +60,7 @@ function Execute() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values,"values")
+    // console.log(values,"values")
   }
 
   return (
@@ -82,10 +82,10 @@ function Execute() {
                       onValueChange={field.onChange}
                       defaultValue={field.value || "model1"}
                     >
-                      <SelectTrigger className="w-full md:w-[200px] bg-[#1C2124]">
+                      <SelectTrigger className="w-full md:w-[200px]">
                         <SelectValue placeholder="Select a model" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1C2124]">
+                      <SelectContent>
                         <SelectItem value="model1">Model</SelectItem>
                         <SelectItem value="model2">Present</SelectItem>
                       </SelectContent>
@@ -102,7 +102,7 @@ function Execute() {
                 <FormItem>
                   <FormLabel>Run Schedule</FormLabel>
                   <FormControl>
-                    <Input placeholder="00:00 pm" {...field} className="w-full md:w-[200px] bg-[#1C2124]" />
+                    <Input placeholder="00:00 pm" {...field} className="w-full md:w-[200px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -111,19 +111,19 @@ function Execute() {
             <FormField
               control={form.control}
               name="device"
-              render={() => (
+              render={({ field }) => (
                 <FormItem className="lg:w-[450px]">
                   <FormLabel>Select Devices</FormLabel>
                   <FormControl>
                     <FancyMultiSelect
                       selectedValues={selectedFrameworks}
                       options={devices}
-                      onChange={(selected: Framework[]) => {
+                      onChange={(selected: any) => {
                         setSelectedFrameworks(selected);
-                        // form.setValue(
-                        //   "device",
-                        //   selected.map((s) => s.value)
-                        // );
+                        form.setValue(
+                          "device",
+                          selected.map((s: any) => s.value)
+                        );
                         if (selected.length > 0) {
                             form.clearErrors("device");
                           }
@@ -135,9 +135,12 @@ function Execute() {
               )}
             />
             <div className="flex justify-start md:justify-end pt-4 lg:pt-32">
-              <Button type="submit" className="text-base px-10 font-semibold py-7 rounded-xl bg-[#1C2124] border-[--border] text-foreground hover:bg-[#1C2124]">
-                Execute
-              </Button>
+            <Button
+              variant="secondary"
+              className="text-base px-10 font-semibold py-7 rounded-xl border-[--border]"
+            >
+              Execute
+            </Button>
             </div>
           </form>
         </Form>

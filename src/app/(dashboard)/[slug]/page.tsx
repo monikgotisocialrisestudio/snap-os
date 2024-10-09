@@ -1,5 +1,5 @@
 import React from "react";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import { TabsContent } from "@/components/ui/tabs";
 import { DASHBOARD_TABS } from "@/lib/enums";
 import ActiveRuns from "../_components/active-runs";
@@ -8,16 +8,20 @@ import Header from "../_components/header";
 import { Card } from "@/components/ui/card";
 import Execute from "../_components/execute";
 
+type propType = { params: { slug: string }; searchParams: {} };
+
 export async function generateMetadata(
+  { params, searchParams }: propType,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const title = "SnapOS";
+  let title = "SnapOS";
 
   return {
     title: title,
   };
 }
 
-const Dashboard = () => {
+const Dashboard = (props: propType) => {
   return (
     <>
       <Header>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Label } from "../../ui/label";
 import { Input } from "../../ui/input";
 
 type propType = {
@@ -35,7 +36,6 @@ const CEInput = React.forwardRef<HTMLInputElement, propType>(
   }
 );
 
-// Assign a display name to the component
 CEInput.displayName = "CEInput";
 
 export default CEInput;

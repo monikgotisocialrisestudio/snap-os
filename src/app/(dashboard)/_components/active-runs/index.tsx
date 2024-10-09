@@ -1,6 +1,7 @@
 import { SECTION_HEADER } from "@/lib/classNames";
 import React from "react";
 import Records from "./records";
+import { cn } from "@/lib/utils";
 import clsx from "clsx";
 
 const ActiveRuns = () => {
