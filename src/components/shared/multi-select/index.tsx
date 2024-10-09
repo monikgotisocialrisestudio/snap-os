@@ -1,6 +1,5 @@
 import * as React from "react";
-import { X, Check } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import {  Check } from "lucide-react";
 import {
   Command,
   CommandGroup,
@@ -9,7 +8,7 @@ import {
 } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
 
-type Framework = Record<"value" | "label", string>;
+export type Framework = Record<"value" | "label", string>;
 
 interface FancyMultiSelectProps {
   selectedValues: Framework[];

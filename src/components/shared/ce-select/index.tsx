@@ -37,6 +37,7 @@ function CESelect(props: propType) {
     options,
     placeholder,
     triggerProps = { className: "w-full", size: "lg" },
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     itemClick = value => {},
     ...rest
   } = props;
@@ -65,7 +66,7 @@ function CESelect(props: propType) {
                   <SelectItem
                     value={i.value}
                     key={i.value}
-                    onClick={e => {
+                    onClick={() => {
                       itemClick(i.value);
                     }}
                   >

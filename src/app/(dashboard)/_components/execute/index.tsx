@@ -23,7 +23,7 @@ import {
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FancyMultiSelect } from "@/components/shared/multi-select";
+import { FancyMultiSelect, Framework } from "@/components/shared/multi-select";
 
 const formSchema = z.object({
   schedule: z.string().min(2, {
@@ -48,7 +48,7 @@ const devices = [
 
 function Execute() {
   const [activeStep, setActiveStep] = useState<STEPS>(STEPS.MODEL);
-  const [selectedFrameworks, setSelectedFrameworks] = useState([]);
+  const [selectedFrameworks, setSelectedFrameworks] = useState<Framework[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -111,19 +111,19 @@ function Execute() {
             <FormField
               control={form.control}
               name="device"
-              render={({ field }) => (
+              render={() => (
                 <FormItem className="lg:w-[450px]">
                   <FormLabel>Select Devices</FormLabel>
                   <FormControl>
                     <FancyMultiSelect
                       selectedValues={selectedFrameworks}
                       options={devices}
-                      onChange={(selected: any) => {
+                      onChange={(selected: Framework[]) => {
                         setSelectedFrameworks(selected);
-                        form.setValue(
-                          "device",
-                          selected.map((s: any) => s.value)
-                        );
+                        // form.setValue(
+                        //   "device",
+                        //   selected.map((s) => s.value)
+                        // );
                         if (selected.length > 0) {
                             form.clearErrors("device");
                           }

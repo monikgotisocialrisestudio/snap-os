@@ -1,5 +1,4 @@
 import CESelect from "@/components/shared/ce-select";
-import { Card } from "@/components/ui/card";
 import { SECTION_HEADER, SECTION_SUB_HEADER } from "@/lib/classNames";
 import { TIME_FRAME_OPTIONS } from "@/lib/constant";
 import { TIME_FRAME_TYPE } from "@/lib/enums";
