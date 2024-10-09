@@ -12,7 +12,7 @@ const Header = ({
   const params = useParams();
   const router = useRouter();
   return (
-    <div className="container mx-auto flex justify-between py-4">
+    <div className="container mx-auto py-4">
       <Tabs
         defaultValue={params.slug as string}
         className="w-full"
