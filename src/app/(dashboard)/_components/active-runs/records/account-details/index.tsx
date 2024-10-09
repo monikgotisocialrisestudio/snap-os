@@ -10,6 +10,7 @@ import { SECTION_TITLE } from "@/lib/classNames";
 import AccountAnalytics from "./account-analytics";
 import Logs from "./logs";
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type propType = React.ComponentProps<typeof Sheet> & {};
 
 function AccountDetails(props: propType) {

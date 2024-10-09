@@ -8,13 +8,14 @@ import Header from "../_components/header";
 import { Card } from "@/components/ui/card";
 import Execute from "../_components/execute";
 
-type propType = { params: { slug: string }; searchParams: {} };
+
+type propType = { params: { slug: string }; searchParams: `{}` };
 
 export async function generateMetadata(
   { params, searchParams }: propType,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  let title = "SnapOS";
+  const title = "SnapOS";
 
   return {
     title: title,

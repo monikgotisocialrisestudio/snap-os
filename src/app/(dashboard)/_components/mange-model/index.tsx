@@ -55,7 +55,10 @@ const MangeModel = () => {
     },
   });
 
-  function hadleSubmitForm(data: createModelSchemaType) {}
+
+  function hadleSubmitForm(data: createModelSchemaType) {
+    const x=0;
+  }
 
   return (
     <div className="container mx-auto grid grid-cols-12 justify-between gap-4 scroll-smooth py-4">
