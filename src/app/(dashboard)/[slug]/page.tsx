@@ -8,8 +8,8 @@ import Header from "../_components/header";
 import { Card } from "@/components/ui/card";
 import Execute from "../_components/execute";
 
-
-type propType = { params: { slug: string }; searchParams: `{}` };
+// eslint-disable-next-line @typescript-eslint/ban-types
+type propType = { params: { slug: string }; searchParams: {} };
 
 export async function generateMetadata(
   { params, searchParams }: propType,
@@ -30,9 +30,7 @@ const Dashboard = (props: propType) => {
           <ActiveRuns />
         </TabsContent>
         <TabsContent value={DASHBOARD_TABS.EXECUTE}>
-          <Card className="border-none p-4">
-            <Execute />
-          </Card>
+          <Execute />
         </TabsContent>
 
         <TabsContent value={DASHBOARD_TABS.PRESETS}>

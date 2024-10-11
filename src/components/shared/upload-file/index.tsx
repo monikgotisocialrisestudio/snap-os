@@ -1,15 +1,12 @@
 import { Input } from "@/components/ui/input";
 import { getUniqueID } from "@/lib/utils";
-import {
-  ALLOWED_TEXT_TYPE,
-  readAsTextAsync,
-} from "@/lib/fileManagement"; 
+import { ALLOWED_TEXT_TYPE, readAsTextAsync } from "@/lib/fileManagement";
 import { TextType } from "@/lib/types/fileTypes";
 import React, { useRef } from "react";
 
 type propType = {
   children: React.ReactNode;
-  onProcessText: (texts: TextType[]) => void; 
+  onProcessText: (texts: TextType[]) => void;
 } & React.ComponentProps<typeof Input>;
 
 const UploadFile = (props: propType) => {
@@ -22,11 +19,11 @@ const UploadFile = (props: propType) => {
     if (files?.length > 0) {
       for (const file of files) {
         try {
-          const textContent = await readAsTextAsync(file); 
+          const textContent = await readAsTextAsync(file);
           texts.push({
-              content: textContent,
-              file,
-              id: getUniqueID(), 
+            content: textContent,
+            file,
+            id: getUniqueID(),
           });
         } catch (err) {
           const error = err as Error;
@@ -45,7 +42,7 @@ const UploadFile = (props: propType) => {
       {children}
       <Input
         type="file"
-        accept={ALLOWED_TEXT_TYPE?.toString()} 
+        accept={ALLOWED_TEXT_TYPE?.toString()}
         className="absolute inset-0 z-50 h-full opacity-0"
         onChange={onChange}
         multiple

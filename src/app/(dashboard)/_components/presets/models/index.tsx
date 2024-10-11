@@ -45,7 +45,7 @@ const Models = () => {
       <div className={SECTION_SUB_HEADER}>Models</div>
 
       <div className="grid grid-cols-5">
-        <div className="col-span-4 gap-4 rounded-md border border-muted-foreground/50 p-4">
+        <div className="col-span-4 gap-4 rounded-md border border-border p-4">
           <table className="flex w-full flex-col gap-4">
             <thead>
               <tr className="grid grid-cols-4 text-left">
@@ -54,13 +54,14 @@ const Models = () => {
               </tr>
             </thead>
             <tbody className="flex flex-col gap-6">
-              {records.map(row => (
+              {records.map((row) => (
                 <tr className="grid border-collapse grid-cols-4" key={row.id}>
                   <td className={cn("rounded-l-md", TABLE_ROW_CELL)}>
                     <Button
                       variant="link"
                       className="h-fit !p-0"
-                      // onClick={() => {}}
+                      // eslint-disable-next-line @typescript-eslint/no-empty-function
+                      onClick={() => {}}
                     >
                       {row.model}
                     </Button>
@@ -71,7 +72,8 @@ const Models = () => {
                     <Button
                       variant="link"
                       className="ml-auto h-fit !p-0"
-                      // onClick={() => {}}
+                      // eslint-disable-next-line @typescript-eslint/no-empty-function
+                      onClick={() => {}}
                     >
                       edit
                     </Button>

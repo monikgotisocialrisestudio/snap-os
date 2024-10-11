@@ -9,7 +9,7 @@
     "lint": "bunx lint-staged",
     "prepare": "husky",
     "tsc": "bunx tsc --noEmit",
-    "format": "bunx prettier --write '(src|actions)/**/*.(ts|tsx|js)'"
+    "format": "yarn prettier --write '(src|actions)/**/*.(ts|tsx|js)'"
   },
   "hooks": {
     "pre-commit": "bun run lint"

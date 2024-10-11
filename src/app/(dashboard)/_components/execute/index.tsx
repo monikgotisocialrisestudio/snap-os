@@ -38,13 +38,13 @@ const formSchema = z.object({
 });
 
 const devices = [
-    { value: "value1", label: "iphone 11 (GXYXR17KO)" },
-    { value: "value2", label: "iphone 8 (GXYKOD17KO)" },
-    { value: "value3", label: "iPhone 8 (FDASKL12101J)" },
-    { value: "value4", label: "iPhone 8 (OQPADJKCLSP)" },
-    { value: "value5", label: "iPhone 8 (J01LKDS8DSL)" },
-    { value: "value6", label: "iPhone 8 (JDFS08XCL9P)" },
-  ];
+  { value: "value1", label: "iphone 11 (GXYXR17KO)" },
+  { value: "value2", label: "iphone 8 (GXYKOD17KO)" },
+  { value: "value3", label: "iPhone 8 (FDASKL12101J)" },
+  { value: "value4", label: "iPhone 8 (OQPADJKCLSP)" },
+  { value: "value5", label: "iPhone 8 (J01LKDS8DSL)" },
+  { value: "value6", label: "iPhone 8 (JDFS08XCL9P)" },
+];
 
 function Execute() {
   const [activeStep, setActiveStep] = useState<STEPS>(STEPS.MODEL);
@@ -55,7 +55,7 @@ function Execute() {
     defaultValues: {
       schedule: "",
       model: "model1",
-      device: [], 
+      device: [],
     },
   });
 
@@ -64,13 +64,14 @@ function Execute() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row">
-      <div className="w-full md:w-[40%] mb-8 md:mb-0">
-        <Steps activeStep={activeStep} setActiveStep={setActiveStep} />
-      </div>
-      <div className=" mt-0 w-full md:w-[60%] md:mt-16">
+    <div className="container mx-auto grid grid-cols-12 justify-between gap-4 scroll-smooth py-4">
+      <Steps activeStep={activeStep} setActiveStep={setActiveStep} />
+      <div className="col-span-8">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 md:space-y-11">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="mt-9 space-y-10"
+          >
             <FormField
               control={form.control}
               name="model"
@@ -102,7 +103,11 @@ function Execute() {
                 <FormItem>
                   <FormLabel>Run Schedule</FormLabel>
                   <FormControl>
-                    <Input placeholder="00:00 pm" {...field} className="w-full md:w-[200px]" />
+                    <Input
+                      placeholder="00:00 pm"
+                      {...field}
+                      className="w-full md:w-[200px]"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -125,8 +130,8 @@ function Execute() {
                           selected.map((s: any) => s.value)
                         );
                         if (selected.length > 0) {
-                            form.clearErrors("device");
-                          }
+                          form.clearErrors("device");
+                        }
                       }}
                     />
                   </FormControl>
@@ -134,13 +139,10 @@ function Execute() {
                 </FormItem>
               )}
             />
-            <div className="flex justify-start md:justify-end pt-4 lg:pt-32">
-            <Button
-              variant="secondary"
-              className="text-base px-10 font-semibold py-7 rounded-xl border-[--border]"
-            >
-              Execute
-            </Button>
+            <div className="flex justify-end">
+              <Button variant="secondary" size="lg" className="font-semibold">
+                Execute
+              </Button>
             </div>
           </form>
         </Form>

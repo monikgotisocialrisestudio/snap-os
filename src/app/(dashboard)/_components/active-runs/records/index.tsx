@@ -2,7 +2,11 @@
 import { cn, getUniqueID } from "@/lib/utils";
 import React, { useState } from "react";
 import { Trash2 } from "lucide-react";
-import { TABLE_ROW_CELL, TABLE_TITLE_ROW_CELL } from "@/lib/classNames";
+import {
+  CAPTION_SMALL_TEXT,
+  TABLE_ROW_CELL,
+  TABLE_TITLE_ROW_CELL,
+} from "@/lib/classNames";
 import { Button } from "@/components/ui/button";
 import AccountDetails from "./account-details";
 import { ActionTooltip } from "@/components/shared/action-tooltip";
@@ -72,9 +76,14 @@ const Records = () => {
               </td>
               <td className={TABLE_ROW_CELL}>{row.run_time}</td>
               <td className={TABLE_ROW_CELL}>{row.type}</td>
-              <td className="relative rounded-r-md border border-muted-foreground/50 bg-secondary/70 px-4 py-2 text-sm">
+              <td className="relative rounded-r-md border border-border bg-secondary px-4 py-2 text-sm">
                 <div className="truncate">{row.devices}</div>
-                <div className="absolute -bottom-6 right-1 text-sm text-muted-foreground">
+                <div
+                  className={cn(
+                    "absolute -bottom-5 right-1 text-muted-foreground",
+                    CAPTION_SMALL_TEXT
+                  )}
+                >
                   Total: {row.total}
                 </div>
               </td>

@@ -11,9 +11,9 @@ const LoadClassName = () => {
       {/* SECTION_SUB_HEADER */}
       <div className="scroll-m-20 text-xl tracking-tight first:mt-0"></div>
       {/* TABLE_ROW_CELL */}
-      <div className="truncate border border-muted-foreground/50 bg-secondary/70 px-4 py-2 text-sm"></div>
-      {/* MODEL_BACKGROUND */}
-      <div className="bg-secondary/70"></div>
+      <div className="truncate border border-border bg-secondary px-4 py-2 text-sm"></div>
+      {/* CAPTION_SMALL_TEXT */}
+      <div className="text-xs leading-tight"></div>
     </div>
   );
 };

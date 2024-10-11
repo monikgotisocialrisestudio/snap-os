@@ -2,7 +2,7 @@
 import Icon from "@/components/shared/icon";
 import { Separator } from "@/components/ui/separator";
 import { SECTION_TITLE } from "@/lib/classNames";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Header = () => {
   return (

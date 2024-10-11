@@ -27,17 +27,22 @@ const createModelSchema = z.object({
   searchAdds1: z.number().min(1, { message: "Enter valid search adds" }),
   searchAdds2: z.number().min(1, { message: "Enter valid search adds" }),
   selectuser: z.string().min(1, { message: "Select user" }),
-  searchAddsDelay: z.number().min(0, { message: "Delay must be at least 0 seconds" }),
+  searchAddsDelay: z
+    .number()
+    .min(0, { message: "Delay must be at least 0 seconds" }),
   quickAdds1: z.number().min(1, { message: "Enter valid quick adds" }),
   quickAdds2: z.number().min(1, { message: "Enter valid quick adds" }),
-  quickAddsdelay: z.number().min(0, { message: "Delay must be at least 0 seconds" }),
+  quickAddsdelay: z
+    .number()
+    .min(0, { message: "Delay must be at least 0 seconds" }),
 });
 
 export type createModelSchemaType = z.infer<typeof createModelSchema>;
 
 const MangeModel = () => {
   const [activeStep, setActiveStep] = useState<STEPS>(STEPS.CYCLES);
-  const [photos, setPhotos] = useState<TextType[]>([]);
+  const [files, setFiles] = useState<TextType[]>([]);
+  const [isSearchAddsActive, setSearchAddsActive] = useState(true);
 
   const form = useForm<createModelSchemaType>({
     resolver: zodResolver(createModelSchema),
@@ -51,39 +56,55 @@ const MangeModel = () => {
       searchAddsDelay: 0,
       quickAdds1: 0,
       quickAdds2: 0,
-      quickAddsdelay: 0
+      quickAddsdelay: 0,
     },
   });
 
+  const handleSearchSwitchChange = (checked: boolean) => {
+    setSearchAddsActive(checked);
+  };
+  const handleQuickSwitchChange = (checked: boolean) => {
+    setSearchAddsActive(checked);
+  };
 
-  function hadleSubmitForm(data: createModelSchemaType) {
-    const x=0;
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  function hadleSubmitForm(data: createModelSchemaType) {}
 
   return (
     <div className="container mx-auto grid grid-cols-12 justify-between gap-4 scroll-smooth py-4">
       <Steps activeStep={activeStep} setActiveStep={setActiveStep} />
 
-      <div className="col-span-8 flex flex-col gap-6">
+      <div className="col-span-8 mt-9">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(hadleSubmitForm)}>
-          <Cycle form={form} />
-          <SearchAdds form={form} />
-          <UploadUser form={form} photos={photos} setPhotos={setPhotos} />
-          <QuickAdds form={form} />
-          <div className="flex justify-end mt-4">
-            <Button
-              type="submit"
-              variant="secondary"
-              className="text-base px-10 font-semibold py-7 rounded-xl border-[--border] ml-auto w-fit"
-            >
-              Create
-            </Button>
-          </div>
+          <form
+            onSubmit={form.handleSubmit(hadleSubmitForm)}
+            className="space-y-10"
+          >
+            <Cycle form={form} />
+            <SearchAdds
+              form={form}
+              isActive={isSearchAddsActive}
+              onSwitchChange={handleSearchSwitchChange}
+            />
+            <UploadUser form={form} files={files} setFiles={setFiles} />
+            <QuickAdds
+              form={form}
+              isActive={isSearchAddsActive}
+              onSwitchChange={handleQuickSwitchChange}
+            />
+            <div className="flex justify-end">
+              <Button
+                type="submit"
+                variant="secondary"
+                size="lg"
+                className="ml-auto font-semibold"
+              >
+                Create
+              </Button>
+            </div>
           </form>
         </Form>
       </div>
-
     </div>
   );
 };

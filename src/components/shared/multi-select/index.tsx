@@ -17,7 +17,11 @@ interface FancyMultiSelectProps {
   options: Framework[]; // New prop for options
 }
 
-export function FancyMultiSelect({ selectedValues, onChange, options }: FancyMultiSelectProps) {
+export function FancyMultiSelect({
+  selectedValues,
+  onChange,
+  options,
+}: FancyMultiSelectProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
   const [inputValue, setInputValue] = React.useState("");
@@ -33,27 +37,9 @@ export function FancyMultiSelect({ selectedValues, onChange, options }: FancyMul
   );
 
   return (
-    <Command onKeyDown={handleKeyDown} className="overflow-visible bg-transparent">
-      <div className="group rounded-md border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
+    <Command onKeyDown={handleKeyDown} className="overflow-visible">
+      <div className="group rounded-md border border-border bg-secondary py-2 text-sm ring-offset-background focus-within:ring-1 focus-within:ring-ring focus-within:ring-offset-1">
         <div className="flex flex-wrap gap-1">
-          {/* {selectedValues.length > 0 && (
-            <>
-              <Badge key={selectedValues[0].value} variant="secondary">
-                {selectedValues[0].label}
-                <button
-                  className="ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                  onClick={() => onChange([])}
-                >
-                  <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
-                </button>
-              </Badge>
-              {selectedValues.length > 1 && (
-                <Badge variant="secondary">
-                  +{selectedValues.length - 1} more
-                </Badge>
-              )}
-            </>
-          )} */}
           <CommandPrimitive.Input
             ref={inputRef}
             value={inputValue}
@@ -61,41 +47,45 @@ export function FancyMultiSelect({ selectedValues, onChange, options }: FancyMul
             onBlur={() => setOpen(false)}
             onFocus={() => setOpen(true)}
             placeholder="Devices"
-            className="ml-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+            className="flex-1 bg-transparent px-3 outline-none placeholder:text-white"
           />
         </div>
       </div>
-      <div className="relative mt-2">
+      <div className="relative mt-1">
         <CommandList>
           {open && options.length > 0 ? (
-            <div className="absolute top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in ">
+            <div className="absolute top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in">
               <CommandGroup className="h-full overflow-auto">
-                {options.map((framework) => {
-                  const isSelected = selectedValues.some((s) => s.value === framework.value);
+                {options.map(framework => {
+                  const isSelected = selectedValues.some(
+                    s => s.value === framework.value
+                  );
                   return (
                     <CommandItem
                       key={framework.value}
-                      onMouseDown={(e) => {
+                      onMouseDown={e => {
                         e.preventDefault();
                         e.stopPropagation();
                       }}
                       onSelect={() => {
                         const newSelection = isSelected
-                          ? selectedValues.filter((s) => s.value !== framework.value)
+                          ? selectedValues.filter(
+                              s => s.value !== framework.value
+                            )
                           : [...selectedValues, framework];
 
                         onChange(newSelection);
                         setInputValue("");
                       }}
-                      className={"cursor-pointer flex items-center"}
+                      className={"flex cursor-pointer items-center"}
                     >
                       <div className="flex items-center">
                         {isSelected ? (
-                          <div className="flex items-center rounded-sm justify-center mr-2 h-4 w-4 border border-input bg-transparent border-white">
+                          <div className="mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-border border-white bg-transparent">
                             <Check className="text-white" />
                           </div>
                         ) : (
-                          <div className="mr-2 h-4 w-4 border border-input bg-transparent rounded-sm" />
+                          <div className="mr-2 h-4 w-4 rounded-sm border border-border bg-transparent" />
                         )}
                         {framework.label}
                       </div>

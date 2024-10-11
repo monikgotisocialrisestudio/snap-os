@@ -10,8 +10,8 @@ export const SECTION_SUB_HEADER =
   "scroll-m-20 text-xl tracking-tight first:mt-0";
 
 export const TABLE_ROW_CELL =
-  "truncate border border-muted-foreground/50 bg-secondary/70 px-4 py-2 text-sm";
+  "truncate border border-border bg-secondary px-4 py-2 text-sm";
 
 export const TABLE_TITLE_ROW_CELL = "px-4";
 
-export const MODEL_BACKGROUND = "bg-secondary/70";
+export const CAPTION_SMALL_TEXT = "text-xs leading-tight";

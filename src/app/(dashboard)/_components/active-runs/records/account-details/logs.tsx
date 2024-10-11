@@ -6,7 +6,7 @@ const Logs = () => {
   return (
     <div className="flex flex-1 flex-col gap-4">
       <h4 className={SECTION_SUB_HEADER}>Logs</h4>
-      <ScrollArea className="h-72 max-h-72 rounded-md border border-muted-foreground/50">
+      <ScrollArea className="h-72 max-h-72 rounded-md border border-border">
         <div className="flex h-full flex-col p-4">
           <p className="flex-1"></p>
           <p>[2024-07-28 21:21:43] Run Executed</p>

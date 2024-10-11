@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { MoveLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { DASHBOARD_TABS } from "@/lib/enums";
+import { CAPTION_SMALL_TEXT } from "@/lib/classNames";
 
 type propType = {
   activeStep: STEPS;
@@ -64,7 +65,7 @@ const Steps = (props: propType) => {
           <MoveLeft />
         </button>
         <h2 className="scroll-m-20 pb-2 text-2xl font-normal tracking-tight first:mt-0">
-          Creator Model
+          Create Model
         </h2>
       </div>
 
@@ -92,7 +93,7 @@ const Steps = (props: propType) => {
             </span>
             <div className="mt-4 flex flex-col">
               <p className="text-sm [&:not(:first-child)]:mt-6">Cycles</p>
-              <span className="mb-4 text-xs leading-tight">
+              <span className={cn("mb-4", CAPTION_SMALL_TEXT)}>
                 How many times should program execute
               </span>
             </div>
@@ -122,7 +123,7 @@ const Steps = (props: propType) => {
             </span>
             <div className="mt-4 flex flex-col">
               <p className="text-sm [&:not(:first-child)]:mt-6">Search Adds</p>
-              <span className="mb-4 text-xs leading-tight">
+              <span className={cn("mb-4", CAPTION_SMALL_TEXT)}>
                 How many search adds do you want to do
               </span>
             </div>
@@ -152,7 +153,7 @@ const Steps = (props: propType) => {
             </span>
             <div className="mt-4 flex flex-col">
               <p className="text-sm [&:not(:first-child)]:mt-6">Upload Names</p>
-              <span className="mb-4 text-xs leading-tight">
+              <span className={cn("mb-4", CAPTION_SMALL_TEXT)}>
                 Upload the list of names you want to use for search adds
               </span>
             </div>
@@ -182,7 +183,7 @@ const Steps = (props: propType) => {
             </span>
             <div className="mt-4 flex flex-col">
               <p className="text-sm [&:not(:first-child)]:mt-6">Quick Adds</p>
-              <span className="mb-4 text-xs leading-tight">
+              <span className={cn("mb-4", CAPTION_SMALL_TEXT)}>
                 How many quick adds do you want to do
               </span>
             </div>
@@ -207,7 +208,7 @@ const Steps = (props: propType) => {
             </span>
             <div className="mt-4 flex flex-col">
               <p className="text-sm [&:not(:first-child)]:mt-6">Create</p>
-              <span className="mb-4 text-xs leading-tight">Create</span>
+              <span className={cn("mb-4", CAPTION_SMALL_TEXT)}>Create</span>
             </div>
           </a>
         </li>

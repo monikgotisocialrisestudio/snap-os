@@ -8,11 +8,11 @@ export const readAsTextAsync = (file: File): Promise<string> =>
     reader.onerror = () => reject(new Error("File reading has failed"));
     reader.onload = () => {
       if (typeof reader.result === "string") {
-        resolve(reader.result); 
+        resolve(reader.result);
       } else {
         reject(new Error("Failed to read file as text"));
       }
     };
 
-    reader.readAsText(file); 
+    reader.readAsText(file);
   });

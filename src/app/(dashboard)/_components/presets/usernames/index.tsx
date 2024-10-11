@@ -8,9 +8,17 @@ import {
 } from "@/lib/classNames";
 import { cn, getUniqueID } from "@/lib/utils";
 import { Trash2 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import ManageUsernames from "../../manage-usernames";
+import Confirmation from "@/components/shared/confirmation";
 
 const Usernames = () => {
+  const [details, setDeatils] = useState<{ open: boolean; id: string | null }>({
+    open: false,
+    id: null,
+  });
+  const [confirm, setConfirm] = useState(false);
+
   const records = [
     {
       model: "Brianna_usernamese",
@@ -41,7 +49,7 @@ const Usernames = () => {
     <div className="flex flex-col gap-4">
       <div className={SECTION_SUB_HEADER}>Usernames</div>
       <div className="grid grid-cols-5">
-        <div className="col-span-4 gap-4 rounded-md border border-muted-foreground/50 p-4">
+        <div className="col-span-4 gap-4 rounded-md border border-border p-4">
           <table className="flex w-full flex-col gap-4">
             <thead>
               <tr className="grid grid-cols-4 text-left">
@@ -49,13 +57,18 @@ const Usernames = () => {
               </tr>
             </thead>
             <tbody className="flex flex-col gap-6">
-              {records.map(row => (
+              {records.map((row) => (
                 <tr className="grid border-collapse grid-cols-4" key={row.id}>
                   <td className={cn("rounded-l-md", TABLE_ROW_CELL)}>
                     <Button
                       variant="link"
                       className="h-fit !p-0"
-                      // onClick={() => {}}
+                      onClick={() =>
+                        setDeatils({
+                          id: row.id,
+                          open: true,
+                        })
+                      }
                     >
                       {row.model}
                     </Button>
@@ -70,7 +83,8 @@ const Usernames = () => {
                     <Button
                       variant="link"
                       className="ml-auto h-fit !p-0"
-                      // onClick={() => {}}
+                      // eslint-disable-next-line @typescript-eslint/no-empty-function
+                      onClick={() => {}}
                     >
                       edit
                     </Button>
@@ -80,6 +94,7 @@ const Usernames = () => {
                       <Button
                         variant="outline"
                         className="flex h-fit items-center p-1"
+                        onClick={() => setConfirm(true)}
                       >
                         <Trash2 size={20} />
                       </Button>
@@ -89,6 +104,19 @@ const Usernames = () => {
               ))}
             </tbody>
           </table>
+          <ManageUsernames
+            open={details.open}
+            onOpenChange={(value) => {
+              if (!value) {
+                setDeatils({ open: false, id: null });
+              }
+            }}
+          />
+          <Confirmation
+            open={confirm}
+            onOpenChange={setConfirm}
+            content="Are you sure, want to delete usernames?"
+          />
           <div className="col-span-4 mt-10 text-right">
             <Button variant="secondary">Create</Button>
           </div>

@@ -16,4 +16,3 @@ export enum STEPS {
   SCHEDULE = "Run Schedule",
   DEVICE = "Select Devices",
 }
-

@@ -25,7 +25,7 @@ const AccountAnalytics = () => {
       </div>
 
       <div className="flex gap-4">
-        <div className="flex-1 rounded-md bg-secondary/70 p-4 pt-10">
+        <div className="flex-1 rounded-md bg-secondary p-4 pt-10">
           <div>
             <span className={cn(SECTION_HEADER, "font-bold")}>271</span>{" "}
             <span className={cn("text-lg text-muted-foreground")}>
@@ -36,7 +36,7 @@ const AccountAnalytics = () => {
             Search Adds Completed
           </span>
         </div>
-        <div className="flex-1 rounded-md bg-secondary/70 p-4 pt-10">
+        <div className="flex-1 rounded-md bg-secondary p-4 pt-10">
           <div>
             <span className={cn(SECTION_HEADER, "font-bold")}>731</span>{" "}
             <span className={cn("text-lg text-muted-foreground")}>
